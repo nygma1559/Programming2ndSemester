@@ -1,9 +1,12 @@
 #include <iostream>
 #include <cmath>
+#include <time.h>
+#include <stdlib.h>
 
 using namespace std;
 
 int generateRandomNumber() {
+	srand(time(0));
 	return rand() % 100 + 1; // 1 to 100;
 }
 
@@ -20,7 +23,8 @@ void printAnswer(int guess, int secretNumber) {
 
 }
 
-int main() {
+bool cont;
+void playGuessIt() {
 	int secretNumber = generateRandomNumber();
 	int guess;
 	int count = 0;
@@ -43,6 +47,16 @@ int main() {
 
 	cout << "Your score: " << score << endl;
 
+	cout << "--------------------------------------------------------" << endl
+		 << "Play again?" << endl
+		 << "Yes: 1" << endl << "No: 0" << endl;
+	cin >> cont;
+}
+
+int main() {
+	do {
+		playGuessIt();
+	} while (cont);
 
 	return 0;
 }
