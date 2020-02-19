@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int generateRandomNumber() {
+	return rand() % 100 + 1; // 1 to 100;
+}
+
+int getPlayerGuess() {
+	int guess;
+	cout << "Enter your guess: ";
+	cin >> guess;
+	return guess;
+}
+void printAnswer(int guess, int secretNumber) {
+	if (guess > secretNumber) cout << "Your number is too big." << endl << "-------------------------------------" << endl;
+	else if (guess < secretNumber) cout << "Your number is too small." << endl << "-------------------------------------" << endl;
+	else cout << "-------------------------------------" << endl << "Congratulation! You win." << endl;
+
+}
+
+int main() {
+	int secretNumber = generateRandomNumber();
+	int guess;
+	int count = 0;
+
+	do {
+		count++;
+		guess = getPlayerGuess();
+		printAnswer(guess, secretNumber);
+	} while (guess != secretNumber);
+
+	cout << "Your entries: " << count << endl;
+
+	//macScore: 100
+	//cout << "Your score: " << 101 - count;
+
+	//maxScore = 10000
+
+	int score = 10000;
+	if (count != 1) score = (101 - count) * (102 - count) - 100;
+
+	cout << "Your score: " << score << endl;
+
+
+	return 0;
+}
