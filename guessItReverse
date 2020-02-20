@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+int selectNumber(int low, int high);
+char getHostAnswer(int X);
+
+int main() {
+	int X, low = 1, high = 100;
+	char answer;
+
+	cout << "Let's get started!" << endl << "------------------------" << endl;
+	do {
+		X = selectNumber(low, high);
+		answer = getHostAnswer(X);
+		if (answer == '=') cout << "Your number is " << X << endl;
+		else if (answer == '>') high = X - 1;
+		else low = X + 1;
+	} while (answer != '=');
+
+	return 0;
+}
+
+int selectNumber(int low, int high) {
+	return (low+high)/2;
+}
+char getHostAnswer(int X) {
+	// op can be '<', '>' or '='
+
+	cout << "Is " << X << " correct?" << endl;
+	char op;
+	cin >> op;
+	cout << "--------------------" << endl;
+	return op;
+}
